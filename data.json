@@ -1,44 +1,466 @@
 {
   "schemaVersion": 1,
   "source": "tinhtrangphong@ivivu.info",
-  "updatedAt": "2026-07-22T11:45:00+07:00",
+  "updatedAt": "2026-07-22T08:32:50.391Z",
   "year": 2026,
   "summary": {
-    "inboxTotal": 3019,
-    "unread": 893
+    "inboxTotal": null,
+    "unread": 851
   },
   "daily": [
-    {"date":"01/07","ok":4,"error":3,"processing":4,"scope":1,"test":1},
-    {"date":"02/07","ok":15,"error":0,"processing":5,"scope":0,"test":2},
-    {"date":"03/07","ok":11,"error":2,"processing":5,"scope":0,"test":0},
-    {"date":"04/07","ok":4,"error":2,"processing":2,"scope":0,"test":0},
-    {"date":"05/07","ok":2,"error":0,"processing":1,"scope":0,"test":0},
-    {"date":"06/07","ok":10,"error":1,"processing":7,"scope":1,"test":0},
-    {"date":"07/07","ok":6,"error":3,"processing":2,"scope":0,"test":0},
-    {"date":"08/07","ok":15,"error":3,"processing":9,"scope":0,"test":1},
-    {"date":"09/07","ok":13,"error":1,"processing":2,"scope":0,"test":1},
-    {"date":"10/07","ok":18,"error":2,"processing":6,"scope":1,"test":0},
-    {"date":"11/07","ok":5,"error":0,"processing":1,"scope":0,"test":0},
-    {"date":"12/07","ok":1,"error":0,"processing":1,"scope":0,"test":0},
-    {"date":"13/07","ok":16,"error":3,"processing":2,"scope":0,"test":0},
-    {"date":"14/07","ok":16,"error":0,"processing":6,"scope":0,"test":0},
-    {"date":"15/07","ok":13,"error":1,"processing":5,"scope":0,"test":0},
-    {"date":"16/07","ok":11,"error":1,"processing":5,"scope":0,"test":0},
-    {"date":"17/07","ok":13,"error":1,"processing":4,"scope":0,"test":0},
-    {"date":"18/07","ok":3,"error":0,"processing":2,"scope":0,"test":0},
-    {"date":"19/07","ok":3,"error":0,"processing":0,"scope":0,"test":0},
-    {"date":"20/07","ok":13,"error":1,"processing":4,"scope":0,"test":0},
-    {"date":"21/07","ok":15,"error":1,"processing":3,"scope":1,"test":0},
-    {"date":"22/07","ok":8,"error":1,"processing":1,"scope":0,"test":0}
+    {
+      "date": "07/06",
+      "ok": 2,
+      "error": 0,
+      "processing": 0,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "08/06",
+      "ok": 9,
+      "error": 2,
+      "processing": 4,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "09/06",
+      "ok": 9,
+      "error": 4,
+      "processing": 6,
+      "scope": 1,
+      "test": 0
+    },
+    {
+      "date": "10/06",
+      "ok": 10,
+      "error": 0,
+      "processing": 6,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "11/06",
+      "ok": 8,
+      "error": 2,
+      "processing": 2,
+      "scope": 2,
+      "test": 0
+    },
+    {
+      "date": "12/06",
+      "ok": 7,
+      "error": 2,
+      "processing": 4,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "13/06",
+      "ok": 7,
+      "error": 3,
+      "processing": 0,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "14/06",
+      "ok": 3,
+      "error": 1,
+      "processing": 0,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "15/06",
+      "ok": 7,
+      "error": 2,
+      "processing": 4,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "16/06",
+      "ok": 8,
+      "error": 1,
+      "processing": 4,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "17/06",
+      "ok": 11,
+      "error": 4,
+      "processing": 1,
+      "scope": 1,
+      "test": 0
+    },
+    {
+      "date": "18/06",
+      "ok": 6,
+      "error": 4,
+      "processing": 4,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "19/06",
+      "ok": 9,
+      "error": 2,
+      "processing": 7,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "20/06",
+      "ok": 2,
+      "error": 4,
+      "processing": 1,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "21/06",
+      "ok": 1,
+      "error": 1,
+      "processing": 0,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "22/06",
+      "ok": 8,
+      "error": 1,
+      "processing": 8,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "23/06",
+      "ok": 10,
+      "error": 3,
+      "processing": 6,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "24/06",
+      "ok": 9,
+      "error": 3,
+      "processing": 6,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "25/06",
+      "ok": 6,
+      "error": 4,
+      "processing": 4,
+      "scope": 1,
+      "test": 0
+    },
+    {
+      "date": "26/06",
+      "ok": 6,
+      "error": 3,
+      "processing": 3,
+      "scope": 1,
+      "test": 0
+    },
+    {
+      "date": "27/06",
+      "ok": 1,
+      "error": 3,
+      "processing": 1,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "28/06",
+      "ok": 1,
+      "error": 1,
+      "processing": 1,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "29/06",
+      "ok": 7,
+      "error": 3,
+      "processing": 5,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "30/06",
+      "ok": 12,
+      "error": 3,
+      "processing": 1,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "01/07",
+      "ok": 4,
+      "error": 1,
+      "processing": 2,
+      "scope": 1,
+      "test": 0
+    },
+    {
+      "date": "02/07",
+      "ok": 12,
+      "error": 0,
+      "processing": 5,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "03/07",
+      "ok": 9,
+      "error": 2,
+      "processing": 4,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "04/07",
+      "ok": 3,
+      "error": 2,
+      "processing": 2,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "05/07",
+      "ok": 2,
+      "error": 0,
+      "processing": 1,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "06/07",
+      "ok": 9,
+      "error": 1,
+      "processing": 6,
+      "scope": 1,
+      "test": 0
+    },
+    {
+      "date": "07/07",
+      "ok": 6,
+      "error": 3,
+      "processing": 2,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "08/07",
+      "ok": 12,
+      "error": 3,
+      "processing": 8,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "09/07",
+      "ok": 10,
+      "error": 0,
+      "processing": 2,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "10/07",
+      "ok": 12,
+      "error": 2,
+      "processing": 6,
+      "scope": 1,
+      "test": 0
+    },
+    {
+      "date": "11/07",
+      "ok": 5,
+      "error": 0,
+      "processing": 1,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "12/07",
+      "ok": 1,
+      "error": 0,
+      "processing": 1,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "13/07",
+      "ok": 12,
+      "error": 3,
+      "processing": 2,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "14/07",
+      "ok": 12,
+      "error": 0,
+      "processing": 5,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "15/07",
+      "ok": 10,
+      "error": 1,
+      "processing": 5,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "16/07",
+      "ok": 11,
+      "error": 1,
+      "processing": 4,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "17/07",
+      "ok": 12,
+      "error": 1,
+      "processing": 4,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "18/07",
+      "ok": 3,
+      "error": 0,
+      "processing": 2,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "19/07",
+      "ok": 3,
+      "error": 0,
+      "processing": 0,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "20/07",
+      "ok": 12,
+      "error": 1,
+      "processing": 4,
+      "scope": 0,
+      "test": 0
+    },
+    {
+      "date": "21/07",
+      "ok": 15,
+      "error": 1,
+      "processing": 3,
+      "scope": 1,
+      "test": 0
+    },
+    {
+      "date": "22/07",
+      "ok": 12,
+      "error": 4,
+      "processing": 1,
+      "scope": 1,
+      "test": 0
+    }
   ],
   "recent": [
-    {"hotel":"The Anam Cam Ranh","subject":"Update availability - THE ANAM CAM RANH","time":"22/07/2026 11:32","status":"ok","file":true},
-    {"hotel":"HTB / Song Living","subject":"Room Availability 2026 - Update on July 22","time":"22/07/2026 11:15","status":"processing","file":true},
-    {"hotel":"Melia Vinpearl North","subject":"Notification of Close Sales - Updated 22 July","time":"22/07/2026 11:04","status":"ok","file":false},
-    {"hotel":"Hotel Du Parc Hanoi","subject":"B2B Black Out Date Notice","time":"22/07/2026 10:16","status":"ok","file":true},
-    {"hotel":"Sheraton Nha Trang","subject":"Updated Stop Sales - Domestic Market","time":"22/07/2026 09:38","status":"ok","file":true},
-    {"hotel":"Comodo Nha Trang","subject":"Stop Sales for August 2026","time":"22/07/2026 09:26","status":"error","file":false},
-    {"hotel":"Pullman Phú Quốc Beach Resort","subject":"Close Sales Update Jul 2026 - Jan 2027","time":"21/07/2026 15:58","status":"processing","file":true},
-    {"hotel":"Grand Royal Riverside Huế","subject":"Thông báo Close Sale - cập nhật 21/07","time":"21/07/2026 11:57","status":"processing","file":true}
+    {
+      "hotel": "Google",
+      "subject": "Security alert",
+      "time": "22/07/2026 15:10",
+      "status": "scope",
+      "file": false
+    },
+    {
+      "hotel": "Dang, My Linh",
+      "subject": "Crowne Plaza Danang City Centre_Stop Sell Notification_22 July 2026",
+      "time": "22/07/2026 15:00",
+      "status": "error",
+      "file": true
+    },
+    {
+      "hotel": "Nguyen The Bao",
+      "subject": "Duyen Ha Resort Cam Ranh - Stop Sales 01/08-02/08/2026",
+      "time": "22/07/2026 14:15",
+      "status": "ok",
+      "file": false
+    },
+    {
+      "hotel": "RHI, Danang Hoian Reservation",
+      "subject": "STOP SALE UPDATED ON 22nd JULY",
+      "time": "22/07/2026 14:12",
+      "status": "ok",
+      "file": true
+    },
+    {
+      "hotel": "Vinh Nguyễn- Liberty Central Nha Trang",
+      "subject": "*** UPDATE STOP SALES - LIBERTY CENTRAL NHATRANG HOTEL",
+      "time": "22/07/2026 13:31",
+      "status": "ok",
+      "file": false
+    },
+    {
+      "hotel": "Reservation Supervisor | Cam Ranh Riviera",
+      "subject": "22Jul26_Cam Ranh Riviera Resort & Spa - Inventory Availability Calendar",
+      "time": "22/07/2026 12:31",
+      "status": "ok",
+      "file": true
+    },
+    {
+      "hotel": "Reservations | The Anam Cam Ranh",
+      "subject": "Update availability - THE ANAM CAM RANH- Vietnam",
+      "time": "22/07/2026 11:32",
+      "status": "ok",
+      "file": true
+    },
+    {
+      "hotel": "Reservations | The Anam Cam Ranh",
+      "subject": "Update availability - THE ANAM CAM RANH- Vietnam",
+      "time": "22/07/2026 11:32",
+      "status": "error",
+      "file": true
+    },
+    {
+      "hotel": "HTB/PCB - Hau Nguyen - sales4",
+      "subject": "HTB - Room Availability 2026 - Update on July 22, 2026",
+      "time": "22/07/2026 11:15",
+      "status": "processing",
+      "file": true
+    },
+    {
+      "hotel": "Duong Thi Thanh, Nga",
+      "subject": "RE: MELIA VINPEARL NORTH - NOTIFICATION OF CLOSE SALES I UPDATED ON 22nd July 2026",
+      "time": "22/07/2026 11:04",
+      "status": "ok",
+      "file": false
+    },
+    {
+      "hotel": "Duong Huong Ly",
+      "subject": "HOTEL DU PARC HANOI//B2B Black Out Date Notice (22JUL)",
+      "time": "22/07/2026 10:16",
+      "status": "ok",
+      "file": true
+    },
+    {
+      "hotel": "Nguyen, Trinh",
+      "subject": "UPDATED STOP SALES - Sheraton Nha Trang Hotel & Spa - Domestic Market - 22 July 2026",
+      "time": "22/07/2026 09:38",
+      "status": "ok",
+      "file": true
+    }
   ]
 }
