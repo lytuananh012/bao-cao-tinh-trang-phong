@@ -27,7 +27,7 @@
     <div class="header-actions"><button class="date-box" id="dateBox">01/07/2026 – 22/07/2026</button><button class="export" id="exportBtn">⇩&nbsp; Xuất báo cáo</button></div>
   </header>
   <main>
-    <section class="filters"><div class="tabs" id="tabs"><button data-range="7">7 ngày</button><button data-range="14">14 ngày</button><button class="active" data-range="month">Tháng 7</button></div><span class="source">Dữ liệu: tinhtrangphong@ivivu.info</span><span class="updated">Cập nhật: 22/07/2026 11:45</span></section>
+    <section class="filters"><div class="tabs" id="tabs"><button data-range="7">7 ngày</button><button data-range="14">14 ngày</button><button class="active" data-range="month">Toàn kỳ</button></div><span class="source" id="sourceText">Dữ liệu: tinhtrangphong@ivivu.info</span><span class="updated" id="updatedText">Đang tải dữ liệu mới nhất…</span></section>
     <section class="kpis" id="kpis"></section>
     <section class="analytics">
       <article class="panel chart-panel">
@@ -43,38 +43,51 @@
       </aside>
     </section>
     <section class="panel table-panel"><div class="toolbar"><div><h2>Khách sạn cập nhật gần đây</h2><p>Danh sách email mới nhất theo trạng thái xử lý</p></div><div class="tools"><button class="clear" id="clearBtn" hidden></button><label class="search"><input id="search" placeholder="Tìm khách sạn" aria-label="Tìm khách sạn"></label></div></div><div class="table-wrap"><table><thead><tr><th>Khách sạn</th><th>Nội dung cập nhật</th><th>Thời gian nhận</th><th>Tag xử lý</th><th>Tệp</th></tr></thead><tbody id="tbody"></tbody></table></div></section>
-    <footer><span>Ảnh chụp dữ liệu tại thời điểm 22/07/2026 11:45</span><span>Tổng toàn hộp thư: 3.019 email · 893 chưa đọc</span></footer>
+    <footer><span id="snapshotText">Dữ liệu được đồng bộ tự động từ n8n</span><span id="mailboxText">Nguồn: Gmail tình trạng phòng</span></footer>
   </main>
   <script>
-    const data=[
+    const fallbackData=[
       ['01/07',4,3,4,1,1],['02/07',15,0,5,0,2],['03/07',11,2,5,0,0],['04/07',4,2,2,0,0],['05/07',2,0,1,0,0],['06/07',10,1,7,1,0],['07/07',6,3,2,0,0],['08/07',15,3,9,0,1],['09/07',13,1,2,0,1],['10/07',18,2,6,1,0],['11/07',5,0,1,0,0],['12/07',1,0,1,0,0],['13/07',16,3,2,0,0],['14/07',16,0,6,0,0],['15/07',13,1,5,0,0],['16/07',11,1,5,0,0],['17/07',13,1,4,0,0],['18/07',3,0,2,0,0],['19/07',3,0,0,0,0],['20/07',13,1,4,0,0],['21/07',15,1,3,1,0],['22/07',8,1,1,0,0]
     ].map(x=>({date:x[0],ok:x[1],error:x[2],processing:x[3],scope:x[4],test:x[5]}));
     const meta={ok:{label:'Đã xử lý',short:'Thành công',color:'#289466',icon:'✓',cls:'ok'},error:{label:'Lỗi',short:'Lỗi',color:'#e24c43',icon:'!',cls:'error'},processing:{label:'Đang xử lý',short:'Đang xử lý',color:'#eda22d',icon:'◷',cls:'processing'},scope:{label:'Ngoài phạm vi',short:'Ngoài phạm vi',color:'#718096',icon:'⊘',cls:'scope'}};
-    const records=[
+    const fallbackRecords=[
       ['The Anam Cam Ranh','Update availability - THE ANAM CAM RANH','22/07/2026 11:32','ok',true],['HTB / Song Living','Room Availability 2026 - Update on July 22','22/07/2026 11:15','processing',true],['Melia Vinpearl North','Notification of Close Sales - Updated 22 July','22/07/2026 11:04','ok',false],['Hotel Du Parc Hanoi','B2B Black Out Date Notice','22/07/2026 10:16','ok',true],['Sheraton Nha Trang','Updated Stop Sales - Domestic Market','22/07/2026 09:38','ok',true],['Comodo Nha Trang','Stop Sales for August 2026','22/07/2026 09:26','error',false],['Pullman Phú Quốc Beach Resort','Close Sales Update Jul 2026 - Jan 2027','21/07/2026 15:58','processing',true],['Grand Royal Riverside Huế','Thông báo Close Sale - cập nhật 21/07','21/07/2026 11:57','processing',true]
     ].map(x=>({hotel:x[0],subject:x[1],time:x[2],status:x[3],file:x[4]}));
-    let range='month',active='all',selected='22/07',query='';
+    let data=fallbackData,records=fallbackRecords,reportYear=2026,range='month',active='all',selected='22/07',query='';
     const keys=['ok','error','processing','scope'];
     const total=d=>keys.reduce((s,k)=>s+d[k],0);
     const visible=()=>range==='7'?data.slice(-7):range==='14'?data.slice(-14):data;
     function render(){
       const rows=visible(), sums=keys.reduce((o,k)=>(o[k]=rows.reduce((s,d)=>s+d[k],0),o),{}), grand=keys.reduce((s,k)=>s+sums[k],0), max=Math.max(...rows.map(total));
-      document.getElementById('dateBox').textContent=`${rows[0].date}/2026 – ${rows.at(-1).date}/2026`;
+      document.getElementById('dateBox').textContent=`${rows[0].date}/${reportYear} – ${rows.at(-1).date}/${reportYear}`;
       document.getElementById('kpis').innerHTML=keys.map(k=>{const pct=grand?Math.round(sums[k]/grand*1000)/10:0;const note=k==='error'?`${sums[k]} cần kiểm tra`:k==='processing'?`${pct}% chưa hoàn tất`:`${pct}% trong kỳ`;return `<button class="kpi ${meta[k].cls} ${active===k?'active':''}" data-status="${k}"><span class="kpi-icon">${meta[k].icon}</span><span><span class="kpi-label">${meta[k].label}</span><strong>${sums[k]}</strong><small>${note}</small></span></button>`}).join('');
       document.getElementById('legend').innerHTML=keys.map(k=>`<button data-status="${k}" class="${active!=='all'&&active!==k?'dim':''}"><i style="background:${meta[k].color}"></i>${meta[k].label}</button>`).join('');
       document.getElementById('yAxis').innerHTML=`<span>${max}</span><span>${Math.round(max*.66)}</span><span>${Math.round(max*.33)}</span><span>0</span>`;
       const bars=document.getElementById('bars');bars.style.gridTemplateColumns=`repeat(${rows.length},1fr)`;bars.innerHTML=rows.map((d,i)=>`<button class="bar ${selected===d.date?'selected':''}" data-date="${d.date}" aria-label="${d.date}: ${total(d)} email"><span class="tip"><b>${d.date}/2026</b>${keys.map(k=>`<span>${meta[k].label}<strong>${d[k]}</strong></span>`).join('')}</span><span class="stack" style="height:${Math.max(5,total(d)/max*100)}%">${keys.map(k=>d[k]?`<i class="${active!=='all'&&active!==k?'dim':''}" style="height:${d[k]/total(d)*100}%;background:${meta[k].color}"></i>`:'').join('')}</span><span class="xlabel" style="${rows.length>14&&i%2&&i!==rows.length-1?'opacity:0':''}">${d.date}</span></button>`).join('');
       document.getElementById('attentionCount').textContent=sums.error+sums.processing;document.getElementById('errorAlert').textContent=`${sums.error} email xử lý lỗi`;document.getElementById('processingAlert').textContent=`${sums.processing} email chưa hoàn tất`;
       const d=rows.find(x=>x.date===selected)||rows.at(-1);selected=d.date;document.getElementById('reviewDate').textContent=`Đánh giá ngày ${d.date}`;document.getElementById('reviewTotal').textContent=`${total(d)} email`;document.getElementById('meter').style.width=`${total(d)?d.ok/total(d)*100:0}%`;document.getElementById('reviewStats').innerHTML=`<span><b>${d.ok}</b>đã xử lý</span><span><b>${d.error}</b>lỗi</span><span><b>${d.processing}</b>đang xử lý</span>`;
-      const peak=rows.reduce((a,b)=>total(b)>total(a)?b:a);document.getElementById('peak').textContent=`${peak.date}/2026 · ${total(peak)} email`;
+      const peak=rows.reduce((a,b)=>total(b)>total(a)?b:a);document.getElementById('peak').textContent=`${peak.date}/${reportYear} · ${total(peak)} email`;
       renderTable();bindDynamic();
     }
     function renderTable(){const q=query.toLocaleLowerCase('vi');const list=records.filter(r=>(active==='all'||r.status===active)&&(!q||`${r.hotel} ${r.subject}`.toLocaleLowerCase('vi').includes(q)));document.getElementById('tbody').innerHTML=list.length?list.map(r=>`<tr><td><span class="hotel"><span class="building">▥</span><strong>${r.hotel}</strong></span></td><td><span class="subject">${r.subject}</span></td><td>${r.time}</td><td><span class="status ${meta[r.status].cls}">${meta[r.status].short}</span></td><td>${r.file?'📎':'—'}</td></tr>`).join(''):`<tr><td colspan="5" class="empty">Không có khách sạn phù hợp với bộ lọc.</td></tr>`;const clear=document.getElementById('clearBtn');clear.hidden=active==='all';clear.textContent=active==='all'?'':`Bỏ lọc: ${meta[active].label} ×`}
     function bindDynamic(){document.querySelectorAll('[data-status]').forEach(el=>el.onclick=()=>{active=active===el.dataset.status?'all':el.dataset.status;render()});document.querySelectorAll('[data-date]').forEach(el=>el.onclick=()=>{selected=el.dataset.date;render()})}
-    document.getElementById('tabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;range=b.dataset.range;selected='22/07';document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('active',x===b));render()};
+    document.getElementById('tabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;range=b.dataset.range;selected=data.at(-1).date;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('active',x===b));render()};
     document.getElementById('search').oninput=e=>{query=e.target.value;renderTable()};document.getElementById('clearBtn').onclick=()=>{active='all';render()};
-    document.getElementById('exportBtn').onclick=()=>{const rows=visible(),csv=['Ngày,Đã xử lý,Lỗi,Đang xử lý,Ngoài phạm vi,Test',...rows.map(d=>`${d.date}/2026,${d.ok},${d.error},${d.processing},${d.scope},${d.test}`)].join('\n'),blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='bao-cao-tinh-trang-phong.csv';a.click();URL.revokeObjectURL(url)};
-    render();
+    document.getElementById('exportBtn').onclick=()=>{const rows=visible(),csv=['Ngày,Đã xử lý,Lỗi,Đang xử lý,Ngoài phạm vi,Test',...rows.map(d=>`${d.date}/${reportYear},${d.ok},${d.error},${d.processing},${d.scope},${d.test||0}`)].join('\n'),blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='bao-cao-tinh-trang-phong.csv';a.click();URL.revokeObjectURL(url)};
+    function formatUpdated(value){const d=new Date(value);return Number.isNaN(d.getTime())?value:new Intl.DateTimeFormat('vi-VN',{dateStyle:'short',timeStyle:'short',timeZone:'Asia/Ho_Chi_Minh'}).format(d)}
+    async function loadLiveData(){
+      try{
+        const response=await fetch(`data.json?v=${Date.now()}`,{cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);
+        const live=await response.json();if(!Array.isArray(live.daily)||!live.daily.length)throw new Error('Dữ liệu ngày trống');
+        data=live.daily;records=Array.isArray(live.recent)?live.recent:fallbackRecords;reportYear=Number(live.year)||new Date().getFullYear();selected=data.at(-1).date;
+        document.getElementById('sourceText').textContent=`Dữ liệu: ${live.source||'Gmail tình trạng phòng'}`;
+        document.getElementById('updatedText').textContent=`Cập nhật: ${formatUpdated(live.updatedAt)}`;
+        document.getElementById('snapshotText').textContent=`Đồng bộ tự động lúc ${formatUpdated(live.updatedAt)}`;
+        document.getElementById('mailboxText').textContent=live.summary?.inboxTotal!=null?`Tổng hộp thư: ${Number(live.summary.inboxTotal).toLocaleString('vi-VN')} email · ${Number(live.summary.unread||0).toLocaleString('vi-VN')} chưa đọc`:'Nguồn: Gmail tình trạng phòng';
+        render();
+      }catch(error){document.getElementById('updatedText').textContent='Đang dùng dữ liệu dự phòng';console.warn('Không tải được data.json',error);render()}
+    }
+    render();loadLiveData();
   </script>
 </body>
 </html>
